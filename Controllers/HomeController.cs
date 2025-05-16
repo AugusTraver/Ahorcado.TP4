@@ -17,4 +17,11 @@ public class HomeController : Controller
     {
         return View();
     }
+
+[HttpPost]
+public IActionResult ComenzarJuego (string Modo)
+{
+Juego.InicializarJuego(Modo);
+return View();
 }
+    }
