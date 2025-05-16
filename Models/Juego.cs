@@ -1,11 +1,15 @@
 public static class Juego
 {
-    public static Dictionary<int, Array> ModoDificil { get; private set; }
-    public static Dictionary<int, Array> ModoNormal { get; private set; }
-    public static Dictionary<int, Array> ModoFacil { get; private set; }
+    public static Dictionary<int, char[]> ModoDificil { get; private set; }
+    public static Dictionary<int, char[]> ModoNormal { get; private set; }
+    public static Dictionary<int, char[]> ModoFacil { get; private set; }
+     public static char[] PalabraElegida{ get; private set; }
+      public static List<char> IntentosLetras;
+      public static int ContadorIntentos;
 
     public static void InicializarJuego(string Nivel)
     {
+        ContadorIntentos = 0;
         char[] palabra1 = { 'd', 'e', 's', 'a', 'p', 'a', 'r', 'e', 'c', 'i', 'd', 'o' }; // desaparecido  
         char[] palabra2 = { 'a', 'd', 'm', 'i', 'n', 'i', 's', 't', 'r', 'a', 'r', 'e' }; // administrare  
         char[] palabra3 = { 'c', 'o', 'n', 'v', 'i', 'v', 'e', 'n', 'c', 'i', 'a', 's' }; // convivencias  
@@ -68,21 +72,37 @@ public static class Juego
         ModoFacil.Add(9, palabra29);
         ModoFacil.Add(10, palabra30);
         Random rnd = new Random();
+
         if (Nivel == "Dificil")
         {
-         int numeroAleatorio = rnd.Next(1, ModoDificil.Count);
+            int numeroAleatorio = rnd.Next(1, ModoDificil.Count);
+            PalabraElegida = ModoDificil[numeroAleatorio];
         }
         if (Nivel == "Normal")
         {
             int numeroAleatorio = rnd.Next(1, ModoNormal.Count);
+            PalabraElegida = ModoNormal[numeroAleatorio];
         }
         if (Nivel == "Facil")
         {
             int numeroAleatorio = rnd.Next(1, ModoFacil.Count);
+            PalabraElegida = ModoFacil[numeroAleatorio];
         }
-        
-        
 
     }
-
+    public static void CompararLetra(char LetraIngresada)
+    {
+     IntentosLetras.Add(LetraIngresada);
+     ContadorIntentos = ContadorIntentos + 1;
+     if (PalabraElegida.Contains(LetraIngresada))
+     {
+         for (int i=0; i<IntentosLetras.Count;i++)
+         {
+         if(IntentosLetras[i] == PalabraElegida[i])
+         {
+         
+         }  
+         }
+     }
+    }
 }
