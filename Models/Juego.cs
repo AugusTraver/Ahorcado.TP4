@@ -3,10 +3,10 @@ public static class Juego
     public static Dictionary<int, char[]> ModoDificil { get; private set; }
     public static Dictionary<int, char[]> ModoNormal { get; private set; }
     public static Dictionary<int, char[]> ModoFacil { get; private set; }
-     public static char[] PalabraElegida{ get; private set; }
-      public static List<char> IntentosLetras;
-      public static int ContadorIntentos;
-
+    public static char[] PalabraElegida { get; private set; }
+    public static List<char> IntentosLetras  { get; private set; }
+    public static int ContadorIntentos;
+    public static char[] Adivinanza { get; private set; }
     public static void InicializarJuego(string Nivel)
     {
         ContadorIntentos = 0;
@@ -92,17 +92,40 @@ public static class Juego
     }
     public static void CompararLetra(char LetraIngresada)
     {
-     IntentosLetras.Add(LetraIngresada);
-     ContadorIntentos = ContadorIntentos + 1;
-     if (PalabraElegida.Contains(LetraIngresada))
-     {
-         for (int i=0; i<IntentosLetras.Count;i++)
-         {
-         if(IntentosLetras[i] == PalabraElegida[i])
-         {
-         
-         }  
-         }
-     }
+        IntentosLetras.Add(LetraIngresada);
+        ContadorIntentos = ContadorIntentos + 1;
+        Adivinanza = new char[PalabraElegida.Length];
+        for (int X = 0; X < Adivinanza.Length; X++)
+        {
+            Adivinanza[X] = '-';
+        }
+        if (!IntentosLetras.Contains(LetraIngresada))
+        {
+            IntentosLetras.Add(LetraIngresada);
+            for (int i = 0; i < IntentosLetras.Count; i++)
+            {
+                for (int j = 0; j < Adivinanza.Length; j++)
+                {
+                    if (IntentosLetras[i] == PalabraElegida[j])
+                    {
+                        Adivinanza[j] = IntentosLetras[i];
+                    }
+                }
+            }
+        }
+    }
+    public static void CompararPalabra(string AdPalabra)
+    {
+        int i = -1;
+        char[] AdChar = AdPalabra.ToCharArray();
+        do
+        {
+
+            i++;
+            if (AdChar == PalabraElegida)
+            {
+           // GANASTE
+            }
+        } while ();
     }
 }
