@@ -1,9 +1,11 @@
 ﻿@{
     ViewData["Title"] = "Index";
+    <link rel="stylesheet" href="~/css/estilos.css" />
 }
 
 <div>
     <h1>Bienvenidos al ahorcado</h1>
+    <img src="/Imagenes/MORGAN.jpg" alt="La banda del morgan " />
     <h3>Eliga La dificultad</h3>
     <form action ='@Url.Action("ComenzarJuego","Home") ' method = "post">
     <select name="modo">
@@ -13,5 +15,8 @@
 </select>
 <input  type = "submit" name = "Enviar" >
 </form>
+<footer>
+    <p> La Bnada del Morgans  </p>
+</footer>
 
 </div>

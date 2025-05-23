@@ -18,6 +18,35 @@ body {
 footer {
   margin-top: 10px;
   padding: 10px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
+  background-color: #75fcb1;
+  border-top: 1px solid  #75fcb1;
+}
+*{
+  background-color: #75fcb1;
+
+}
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+nav {
+  margin-bottom: 20px;
+  padding: 10px;
+  text-align: center;
+ font-size: 1.5rem;
+  background-color: #75fcb1;
+  border-radius: 5px;
+}
+h3 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  
+}
+img{
+  width: 200px; 
+  height: auto; 
+  display: block;
+  margin: 0 auto; 
+  border-radius: 30px; 
 }

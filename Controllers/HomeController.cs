@@ -33,7 +33,7 @@ public class HomeController : Controller
         ViewBag.IntentosLetras = Juego.IntentosLetras;
         ViewBag.Intentos = Juego.ContadorIntentos;
 
-        return View("Juego");
+        return View("MostrarResultado");
 
     }
     public IActionResult CompararPalabra(string Palabra)

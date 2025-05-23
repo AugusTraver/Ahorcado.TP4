@@ -102,6 +102,7 @@ public static class Juego
     public static void CompararLetra(char LetraIngresada)
     {
         ContadorIntentos = ContadorIntentos + 1;
+        
         if (!IntentosLetras.Contains(LetraIngresada))
         {
             IntentosLetras.Add(LetraIngresada);
@@ -112,17 +113,20 @@ public static class Juego
                     if (IntentosLetras[i] == PalabraElegida[j])
                     {
                         Adivinanza[j] = IntentosLetras[i];
+
                     }
                 }
             }
+            
         }
+       
     }
     public static bool CompararPalabra(string AdPalabra)
     {
         bool Gano = false;
         char[] AdChar = AdPalabra.ToCharArray();
         ContadorIntentos++;
-            if (AdChar == PalabraElegida)
+            if (AdChar.Length == PalabraElegida.Length)
             {
                 Gano = true;
             }
