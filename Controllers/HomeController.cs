@@ -24,4 +24,14 @@ public IActionResult ComenzarJuego (string Modo)
 Juego.InicializarJuego(Modo);
 return View();
 }
+public IActionResult CompararLetra (char Letra)
+{
+Juego.CompararLetra(Letra);
+return View("Juego");
+}
+public IActionResult CompararPalabra (string Palabra)
+{
+    Juego.CompararPalabra(Palabra);
+    return View("Juego");
+}
     }
