@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "MostrarResultado";
+}
+<div>
+@if(ViewBag.Gano == true)
+{
+<p>Ganaste</p>
+<p>En @ViewBag.Intentos Intentos</p>
+<p>Letras utilizadas -> 
+@for(int i = 0; i < ViewBag.IntentosLetras.Count; i++)
+{
+@ViewBag.IntentosLetras[i];
+}</p>
+}
+
+@if(ViewBag.Gano == false)
+{
+<p>Perdiste salame</p>
+<p>En @ViewBag.Intentos Intentos</p>
+<p>Letras utilizadas -> 
+@for(int i = 0; i < ViewBag.IntentosLetras.Count; i++)
+{
+@ViewBag.IntentosLetras[i];
+}</p>
+}
+</div>

@@ -9,6 +9,10 @@ public static class Juego
     public static char[] Adivinanza { get; private set; }
     public static void InicializarJuego(string Nivel)
     {
+        ModoDificil = new Dictionary<int, char[]>();
+        ModoFacil = new Dictionary<int, char[]>();
+        ModoNormal = new Dictionary<int, char[]>();
+        IntentosLetras = new List<char>();
         ContadorIntentos = 0;
         char[] palabra1 = { 'd', 'e', 's', 'a', 'p', 'a', 'r', 'e', 'c', 'i', 'd', 'o' }; // desaparecido  
         char[] palabra2 = { 'a', 'd', 'm', 'i', 'n', 'i', 's', 't', 'r', 'a', 'r', 'e' }; // administrare  
@@ -89,16 +93,15 @@ public static class Juego
             PalabraElegida = ModoFacil[numeroAleatorio];
         }
 
-    }
-    public static void CompararLetra(char LetraIngresada)
-    {
-        IntentosLetras.Add(LetraIngresada);
-        ContadorIntentos = ContadorIntentos + 1;
         Adivinanza = new char[PalabraElegida.Length];
         for (int X = 0; X < Adivinanza.Length; X++)
         {
             Adivinanza[X] = '-';
         }
+    }
+    public static void CompararLetra(char LetraIngresada)
+    {
+        ContadorIntentos = ContadorIntentos + 1;
         if (!IntentosLetras.Contains(LetraIngresada))
         {
             IntentosLetras.Add(LetraIngresada);
@@ -116,18 +119,14 @@ public static class Juego
     }
     public static bool CompararPalabra(string AdPalabra)
     {
-        int i = -1;
-        bool Gano = true;
+        bool Gano = false;
         char[] AdChar = AdPalabra.ToCharArray();
         ContadorIntentos++;
-        do
-        {
-            i++;
-            if (AdChar[i] != PalabraElegida[i])
+            if (AdChar == PalabraElegida)
             {
-                Gano = false;
+                Gano = true;
             }
-        } while (i < PalabraElegida.Length || Gano == false);
+      
         return Gano;
     }
 }

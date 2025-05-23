@@ -18,20 +18,30 @@ public class HomeController : Controller
         return View();
     }
 
-[HttpPost]
-public IActionResult ComenzarJuego (string Modo)
-{
-Juego.InicializarJuego(Modo);
-return View();
-}
-public IActionResult CompararLetra (char Letra)
-{
-Juego.CompararLetra(Letra);
-return View("Juego");
-}
-public IActionResult CompararPalabra (string Palabra)
-{
-    Juego.CompararPalabra(Palabra);
-    return View("Juego");
-}
+    [HttpPost]
+    public IActionResult ComenzarJuego(string Modo)
+    {
+        Juego.InicializarJuego(Modo);
+        ViewBag.adivinanza = Juego.Adivinanza;
+        ViewBag.IntentosLetras = Juego.IntentosLetras;
+        return View("Juego");
     }
+    public IActionResult CompararLetra(char Letra)
+    {
+        Juego.CompararLetra(Letra);
+        ViewBag.adivinanza = Juego.Adivinanza;
+        ViewBag.IntentosLetras = Juego.IntentosLetras;
+        ViewBag.Intentos = Juego.ContadorIntentos;
+
+        return View("Juego");
+
+    }
+    public IActionResult CompararPalabra(string Palabra)
+    {
+        ViewBag.Gano = Juego.CompararPalabra(Palabra);
+        ViewBag.adivinanza = Juego.Adivinanza;
+        ViewBag.Intentos= Juego.ContadorIntentos;
+        ViewBag.IntentosLetras = Juego.IntentosLetras;
+        return View("MostrarResultado");
+    }
+}

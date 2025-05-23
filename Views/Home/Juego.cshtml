@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Juego";
+}
+
+<div>
+<p> 
+@for(int i = 0; i < ViewBag.adivinanza.Length; i++)
+{
+@ViewBag.adivinanza[i];
+}
+</P>
+<p> Letras utilizadas -> 
+@for(int i = 0; i < ViewBag.IntentosLetras.Count; i++)
+{
+@ViewBag.IntentosLetras[i];
+}
+<p>Intento numero @ViewBag.Intentos</p>
+</p>
+<p>Arriesgar Letra:</p>
+<form action ='@Url.Action("CompararLetra","Home")' method ="post ">
+ <input type ="text" name ="Letra"/>
+<input type ="submit" value ="enviar "/>
+</form>
+<p>Arriesgar Palabra: </p>
+<form action ='@Url.Action("CompararPalabra","Home")' method ="post ">
+<input type ="text" name ="Palabra" />
+<input type ="submit" value ="enviar"/>
+</form>
+
+<div>
