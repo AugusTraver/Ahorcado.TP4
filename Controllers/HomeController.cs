@@ -29,11 +29,17 @@ public class HomeController : Controller
     public IActionResult CompararLetra(char Letra)
     {
         Juego.CompararLetra(Letra);
+    string adivinanzaStr = new string(Juego.Adivinanza);
+    string palabraElegidaStr = new string(Juego.PalabraElegida);
+
+    if (adivinanzaStr == palabraElegidaStr)
+    {
+        return RedirectToAction("CompararPalabra", new { Palabra = adivinanzaStr });
+    }
         ViewBag.adivinanza = Juego.Adivinanza;
         ViewBag.IntentosLetras = Juego.IntentosLetras;
         ViewBag.Intentos = Juego.ContadorIntentos;
-
-        return View("MostrarResultado");
+        return View("Juego");
 
     }
     public IActionResult CompararPalabra(string Palabra)

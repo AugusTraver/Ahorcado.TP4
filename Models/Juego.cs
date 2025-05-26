@@ -7,6 +7,7 @@ public static class Juego
     public static List<char> IntentosLetras { get; private set; }
     public static int ContadorIntentos;
     public static char[] Adivinanza { get; private set; }
+    public static bool Gano { get; private set; }
     public static void InicializarJuego(string Nivel)
     {
         ModoDificil = new Dictionary<int, char[]>();
@@ -102,7 +103,6 @@ public static class Juego
     public static void CompararLetra(char LetraIngresada)
     {
         ContadorIntentos = ContadorIntentos + 1;
-        
         if (!IntentosLetras.Contains(LetraIngresada))
         {
             IntentosLetras.Add(LetraIngresada);
@@ -113,24 +113,28 @@ public static class Juego
                     if (IntentosLetras[i] == PalabraElegida[j])
                     {
                         Adivinanza[j] = IntentosLetras[i];
-
                     }
                 }
             }
-            
         }
-       
     }
     public static bool CompararPalabra(string AdPalabra)
     {
-        bool Gano = false;
         char[] AdChar = AdPalabra.ToCharArray();
         ContadorIntentos++;
-            if (AdChar.Length == PalabraElegida.Length)
+        for (int i = 0; i < AdChar.Length; i++)
+        {
+            if (AdChar[i] != PalabraElegida[i])
+            {
+                Gano = false;
+                return Gano;
+            }
+            else
             {
                 Gano = true;
             }
-      
+        }
+
         return Gano;
     }
 }
